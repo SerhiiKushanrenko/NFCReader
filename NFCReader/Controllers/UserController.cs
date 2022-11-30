@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BLL.Services.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 
 namespace NFCReader.Controllers
 {
@@ -6,11 +7,19 @@ namespace NFCReader.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        [HttpGet]
-        public int GetGuid()
+        private readonly IGeneralService _generalService;
+
+        public UserController(IGeneralService generalService)
         {
-            var a = 15;
-            return a;
+            _generalService = generalService;
+        }
+
+        [HttpGet]
+        public async Task<Guid> StartNFCReader()
+        {
+            var id = await _generalService.StartReader();
+            return id;
+
         }
     }
 }

@@ -4,6 +4,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFCReader", "NFCReader\NFCReader.csproj", "{2BDD027F-737E-4609-9E2F-E28429787602}"
+	ProjectSection(ProjectDependencies) = postProject
+		{71883C41-E30E-46AF-BAA9-1B52E0750CDD} = {71883C41-E30E-46AF-BAA9-1B52E0750CDD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{71883C41-E30E-46AF-BAA9-1B52E0750CDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +20,10 @@ Global
 		{2BDD027F-737E-4609-9E2F-E28429787602}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2BDD027F-737E-4609-9E2F-E28429787602}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2BDD027F-737E-4609-9E2F-E28429787602}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71883C41-E30E-46AF-BAA9-1B52E0750CDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71883C41-E30E-46AF-BAA9-1B52E0750CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71883C41-E30E-46AF-BAA9-1B52E0750CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71883C41-E30E-46AF-BAA9-1B52E0750CDD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
