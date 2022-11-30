@@ -29,7 +29,7 @@ namespace BLL.Services
                 Name = "Name"
             };
 
-            await CallCloudBackEnd(user);
+            // await CallCloudBackEnd(user);
             return id;
         }
 
