@@ -1,6 +1,6 @@
 ﻿namespace BLL.Services.Interfaces
 {
-    public interface IGeneralService
+    public interface IUserAuthService
     {
         public Task StartReader(string id);
     }
