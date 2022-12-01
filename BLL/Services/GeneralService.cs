@@ -17,11 +17,9 @@ namespace BLL.Services
 
         public async Task StartReader(string id)
         {
-            //var id = Guid.NewGuid();
-
             var nfcReaderResult = await _nfcReaderService.GetDataFromReader();
 
-            var user = new UserDTO()
+            var user = new UserAuthDTO()
             {
                 Password = nfcReaderResult.Password,
                 Email = nfcReaderResult.Email,
@@ -30,17 +28,14 @@ namespace BLL.Services
             };
 
             await CallCloudBackEnd(user);
-
         }
 
-        private async Task CallCloudBackEnd(UserDTO user)
+        private async Task CallCloudBackEnd(UserAuthDTO user)
         {
-
-
             var url = await CreateProductAsync(user);
         }
 
-        async Task<HttpStatusCode> CreateProductAsync(UserDTO user)
+        async Task<HttpStatusCode> CreateProductAsync(UserAuthDTO user)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
                 "https://localhost:7079/api/UserInfo", user);

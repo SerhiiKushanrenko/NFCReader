@@ -16,7 +16,7 @@ namespace NFCReader.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> StartNFCReader([FromBody] GuidDTO id)
+        public async Task<IActionResult> StartNFCReader([FromBody] WebGuidDTO id)
         {
             await _generalService.StartReader(id.Id);
             return Ok();

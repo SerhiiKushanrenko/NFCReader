@@ -1,6 +1,6 @@
 ﻿namespace BLL.DTO
 {
-    public class GuidDTO
+    public class WebGuidDTO
     {
         public string Id { get; set; }
     }
