@@ -4,7 +4,7 @@ namespace BLL.Services.Interfaces
 {
     public interface INfcReaderService
     {
-        public NfcReaderDTO GetDataFromReader();
+        public Task<NfcReaderDTO> GetDataFromReader();
 
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IGeneralService
     {
-        public Task<Guid> StartReader();
+        public Task StartReader(string id);
     }
 }

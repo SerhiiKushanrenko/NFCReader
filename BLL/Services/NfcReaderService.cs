@@ -5,7 +5,7 @@ namespace BLL.Services
 {
     public class NfcReaderService : INfcReaderService
     {
-        public NfcReaderDTO GetDataFromReader()
+        public async Task<NfcReaderDTO> GetDataFromReader()
         {
             var newNfcDto = new NfcReaderDTO()
             {

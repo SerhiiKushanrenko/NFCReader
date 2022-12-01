@@ -1,7 +1,6 @@
 ﻿using BLL.DTO;
 using BLL.Services.Interfaces;
 using System.Net;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 
 namespace BLL.Services
@@ -9,49 +8,45 @@ namespace BLL.Services
     public class GeneralService : IGeneralService
     {
         private readonly INfcReaderService _nfcReaderService;
-        static HttpClient client = new();
+        private readonly HttpClient client;
         public GeneralService(INfcReaderService nfcReaderService)
         {
             _nfcReaderService = nfcReaderService;
+            client = new HttpClient();
         }
 
-        public async Task<Guid> StartReader()
+        public async Task StartReader(string id)
         {
-            var id = Guid.NewGuid();
+            //var id = Guid.NewGuid();
 
-            var nfcReaderResult = _nfcReaderService.GetDataFromReader();
+            var nfcReaderResult = await _nfcReaderService.GetDataFromReader();
 
             var user = new UserDTO()
             {
                 Password = nfcReaderResult.Password,
                 Email = nfcReaderResult.Email,
-                Id = id,
+                Id = Guid.Parse(id),
                 Name = "Name"
             };
 
-            // await CallCloudBackEnd(user);
-            return id;
+            await CallCloudBackEnd(user);
+
         }
 
         private async Task CallCloudBackEnd(UserDTO user)
         {
-            client.BaseAddress = new Uri("http://localhost:64195/");
-            client.DefaultRequestHeaders.Accept.Clear();
-            client.DefaultRequestHeaders.Accept.Add(
-                new MediaTypeWithQualityHeaderValue("application/json"));
+
 
             var url = await CreateProductAsync(user);
         }
 
-        static async Task<HttpStatusCode> CreateProductAsync(UserDTO user)
+        async Task<HttpStatusCode> CreateProductAsync(UserDTO user)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
-                "api/products", user);
-            response.EnsureSuccessStatusCode();
+                "https://localhost:7079/api/UserInfo", user);
 
             // return URI of the created resource.
             return response.StatusCode;
         }
-
     }
 }

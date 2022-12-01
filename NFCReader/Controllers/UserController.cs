@@ -1,4 +1,5 @@
-﻿using BLL.Services.Interfaces;
+﻿using BLL.DTO;
+using BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NFCReader.Controllers
@@ -14,12 +15,11 @@ namespace NFCReader.Controllers
             _generalService = generalService;
         }
 
-        [HttpGet]
-        public async Task<Guid> StartNFCReader()
+        [HttpPost]
+        public async Task<IActionResult> StartNFCReader([FromBody] GuidDTO id)
         {
-            var id = await _generalService.StartReader();
-            return id;
-
+            await _generalService.StartReader(id.Id);
+            return Ok();
         }
     }
 }
