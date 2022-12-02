@@ -27,6 +27,7 @@ namespace BLL.Services
                 Name = "Name"
             };
 
+            await Task.Delay(1000);
             await _httpService.CallCloudBackEnd(user);
         }
 

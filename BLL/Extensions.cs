@@ -11,7 +11,7 @@ namespace BLL
         {
             services.AddScoped<IUserAuthService, UserAuthService>();
             services.AddScoped<INfcReaderService, NfcReaderService>();
-            services.AddScoped<IHttpService, HttpService>();
+            services.AddTransient<IHttpService, HttpService>();
         }
     }
 }
