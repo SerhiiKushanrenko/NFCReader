@@ -21,7 +21,7 @@ namespace BLL.Services
         async Task<HttpStatusCode> CreateProductAsync(UserAuthDTO user)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
-                "htt://localhost:8080/api/UserInfo", user);
+                "http://3.10.151.65:8080/api/UserInfo", user);
 
             // return URI of the created resource.
             return response.StatusCode;
