@@ -8,17 +8,17 @@ namespace NFCReader.Controllers
     [ApiController]
     public class UserController : ControllerBase
     {
-        private readonly IUserAuthService _generalService;
+        private readonly IUserAuthService _userAuthService;
 
-        public UserController(IUserAuthService generalService)
+        public UserController(IUserAuthService userAuthService)
         {
-            _generalService = generalService;
+            _userAuthService = userAuthService;
         }
 
         [HttpPost]
         public async Task<IActionResult> StartNfcReader([FromBody] WebGuidDTO id)
         {
-            await _generalService.StartReader(id.Id);
+            await _userAuthService.StartReader(id.Id);
             return Ok();
         }
     }

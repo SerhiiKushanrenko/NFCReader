@@ -7,25 +7,32 @@ namespace BLL.Services
     {
         private readonly INfcReaderService _nfcReaderService;
         private readonly IHttpService _httpService;
+        private readonly IUsbListenerService _usbListenerService;
 
 
-        public UserAuthService(INfcReaderService nfcReaderService, IHttpService httpService)
+        public UserAuthService(INfcReaderService nfcReaderService, IHttpService httpService, IUsbListenerService usbListenerService)
         {
             _nfcReaderService = nfcReaderService;
             _httpService = httpService;
+            _usbListenerService = usbListenerService;
         }
 
         public async Task StartReader(string id)
         {
-            var nfcReaderResult = await _nfcReaderService.GetDataFromReader();
+            // First Version of Data
+            //var nfcReaderResult = await _nfcReaderService.GetDataFromReader();
+            var deviceId = _usbListenerService.StartListen();
+            var resultId = deviceId.GetUniqueDeviceID();
 
             var user = new UserAuthDTO()
             {
-                Password = nfcReaderResult.Password,
-                Email = nfcReaderResult.Email,
-                Id = Guid.Parse(id),
-                Name = "Name"
+                UsbDeviceId = deviceId.GetUniqueDeviceID(),
+                DeviceId = Guid.Parse(id),
+                Name = "Sam"
             };
+
+
+
 
             await Task.Delay(1000);
             await _httpService.CallCloudBackEnd(user);
