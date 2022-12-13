@@ -21,8 +21,10 @@ namespace BLL.Services
         async Task<HttpStatusCode> CreateProductAsync(UserAuthDTO user)
         {
             HttpResponseMessage response = await client.PostAsJsonAsync(
-                "https://cloudnfc.tk/api/UserInfo", user);
-
+                "https://localhost:7079/api/UserInfo", user);
+            //"https://cloudnfc.tk/api/UserInfo", user);
+            // https://localhost:7079/api/UserInfo
+            // 
             // return URI of the created resource.
             return response.StatusCode;
         }

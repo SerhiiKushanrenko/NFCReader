@@ -10,7 +10,7 @@
 
         public string Password { get; set; }
 
-        public string UsbDeviceId { get; set; }
+        public string? UsbDeviceId { get; set; }
 
         public Guid DeviceId { get; set; }
     }
