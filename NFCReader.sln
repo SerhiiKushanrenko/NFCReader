@@ -3,12 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33103.184
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NFCReader", "NFCReader\NFCReader.csproj", "{2BDD027F-737E-4609-9E2F-E28429787602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NFCReader", "NFCReader\NFCReader.csproj", "{2BDD027F-737E-4609-9E2F-E28429787602}"
 	ProjectSection(ProjectDependencies) = postProject
 		{71883C41-E30E-46AF-BAA9-1B52E0750CDD} = {71883C41-E30E-46AF-BAA9-1B52E0750CDD}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BLL", "BLL\BLL.csproj", "{71883C41-E30E-46AF-BAA9-1B52E0750CDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BLL", "BLL\BLL.csproj", "{71883C41-E30E-46AF-BAA9-1B52E0750CDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{21B10A4F-259F-4FDC-BBFE-5D31427E8352}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NfcReader.UnitTests", "NfcReader.UnitTests\NfcReader.UnitTests.csproj", "{88ABDB58-2CF9-441F-A5BA-B98F206290B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,9 +28,16 @@ Global
 		{71883C41-E30E-46AF-BAA9-1B52E0750CDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{71883C41-E30E-46AF-BAA9-1B52E0750CDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{71883C41-E30E-46AF-BAA9-1B52E0750CDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88ABDB58-2CF9-441F-A5BA-B98F206290B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88ABDB58-2CF9-441F-A5BA-B98F206290B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88ABDB58-2CF9-441F-A5BA-B98F206290B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88ABDB58-2CF9-441F-A5BA-B98F206290B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{88ABDB58-2CF9-441F-A5BA-B98F206290B7} = {21B10A4F-259F-4FDC-BBFE-5D31427E8352}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A0C1B324-3219-4146-AA7E-9AA24A7E592B}
