@@ -7,14 +7,13 @@ namespace BLL.Services
     public class UsbListenerService : IUsbListenerService
     {
         private IUsbDeviceService _usbService;
-        private List<UsbDeviceInfoDTO> _staticDevices;
 
-        private readonly TimeSpan WaitTime = TimeSpan.FromSeconds(20);
+
+        private readonly TimeSpan WaitTime = TimeSpan.FromSeconds(10);
 
         public UsbListenerService(IUsbDeviceService deviceService)
         {
             _usbService = deviceService;
-            _staticDevices = _usbService.GetUSBDevices();
         }
 
         public UsbDeviceInfoDTO StartListen()
@@ -26,7 +25,7 @@ namespace BLL.Services
                 newDevices = _usbService.GetUSBDevices();
 
                 newDevices = newDevices.ExceptBy(
-                        _staticDevices.Select(e => e.DeviceId), e => e.DeviceId)
+                        _usbService.StaticDevices.Select(e => e.DeviceId), e => e.DeviceId)
                     .ToList();
 
                 if (newDevices.Any())
@@ -36,6 +35,7 @@ namespace BLL.Services
 
                 if (watch.Elapsed > WaitTime)
                     return new();
+                Task.Delay(20).Wait();
             }
         }
     }

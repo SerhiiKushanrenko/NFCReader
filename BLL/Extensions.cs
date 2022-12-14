@@ -14,6 +14,7 @@ namespace BLL
             services.AddScoped<IUsbDeviceService, UsbDeviceService>();
             services.AddScoped<IUsbListenerService, UsbListenerService>();
             services.AddTransient<IHttpService, HttpService>();
+            services.AddTransient<HttpClient>();
         }
     }
 }

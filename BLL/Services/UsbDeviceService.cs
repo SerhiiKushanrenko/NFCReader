@@ -6,15 +6,26 @@ namespace BLL.Services
 {
     public class UsbDeviceService : IUsbDeviceService
     {
+        public List<UsbDeviceInfoDTO> StaticDevices { get; set; }
+        private readonly ManagementObjectSearcher _searcher;
+        private ManagementObjectCollection _collection { get; set; }
+
+
+        public UsbDeviceService()
+        {
+            _searcher = new(@"Select * From Win32_USBHub");
+            StaticDevices = GetUSBDevices();
+
+        }
         public List<UsbDeviceInfoDTO> GetUSBDevices()
         {
             var devices = new List<UsbDeviceInfoDTO>();
 
-            ManagementObjectCollection collection;
-            using (var searcher = new ManagementObjectSearcher(@"Select * From Win32_USBHub"))
-                collection = searcher.Get();
 
-            foreach (var device in collection)
+            using (_searcher)
+                _collection = _searcher.Get();
+
+            foreach (var device in _collection)
             {
                 devices.Add(new(
                     (string)device.GetPropertyValue("DeviceID"),
@@ -22,7 +33,7 @@ namespace BLL.Services
                     (string)device.GetPropertyValue("Description")
                 ));
             }
-            collection.Dispose();
+            _collection.Dispose();
 
             return devices;
         }

@@ -9,18 +9,18 @@ namespace BLL.Services
     {
         private readonly HttpClient client;
 
-        public HttpService()
+        public HttpService(HttpClient httpClient)
         {
-            client = new HttpClient();
+            client = httpClient;
         }
-        public async Task CallCloudBackEnd(UserAuthDTO user)
+        public async Task<HttpStatusCode> CallCloudBackEnd(UserAuthDTO user)
         {
-            var url = await CreateProductAsync(user);
+            return await CreateProductAsync(user);
         }
 
-        async Task<HttpStatusCode> CreateProductAsync(UserAuthDTO user)
+        private async Task<HttpStatusCode> CreateProductAsync(UserAuthDTO user)
         {
-            HttpResponseMessage response = await client.PostAsJsonAsync(
+            var response = await client.PostAsJsonAsync(
                 "https://localhost:7079/api/UserInfo", user);
             //"https://cloudnfc.tk/api/UserInfo", user);
             // https://localhost:7079/api/UserInfo
