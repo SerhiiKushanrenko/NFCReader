@@ -21,7 +21,7 @@
         public string GetUniqueDeviceID()
         {
 
-            return DeviceId.Split("\\").Last() ?? string.Empty;
+            return DeviceId?.Split("\\").Last();
         }
     }
 }

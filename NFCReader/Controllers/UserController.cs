@@ -1,5 +1,4 @@
-﻿using BLL.DTO;
-using BLL.Services.Interfaces;
+﻿using BLL.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace NFCReader.Controllers
@@ -16,9 +15,9 @@ namespace NFCReader.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> StartNfcReader([FromBody] WebGuidDTO id)
+        public async Task<IActionResult> StartNfcReader([FromBody] string id)
         {
-            await _userAuthService.StartReader(id.Id);
+            await _userAuthService.StartReader(id);
             return Ok();
         }
     }
