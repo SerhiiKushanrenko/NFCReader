@@ -2,6 +2,6 @@
 {
     public interface IUserAuthService
     {
-        public Task StartReader(string id);
+        public Task StartUserAuth(string id);
     }
 }

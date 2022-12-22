@@ -17,9 +17,9 @@ namespace BLL.Services
             _usbListenerService = usbListenerService;
         }
 
-        public async Task StartReader(string id)
+        public async Task StartUserAuth(string id)
         {
-            var deviceId = _usbListenerService.StartListen();
+            var deviceId = _usbListenerService.StartListenUsbPosts();
 
             var user = new UserAuthDTO()
             {
@@ -28,13 +28,8 @@ namespace BLL.Services
                 Name = "Sam"
             };
 
-
-
-
             await Task.Delay(1000);
             await _httpService.CallCloudBackEnd(user);
         }
-
-
     }
 }

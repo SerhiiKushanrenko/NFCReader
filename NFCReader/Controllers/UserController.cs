@@ -17,7 +17,7 @@ namespace NFCReader.Controllers
         [HttpPost]
         public async Task<IActionResult> StartNfcReader([FromBody] string id)
         {
-            await _userAuthService.StartReader(id);
+            await _userAuthService.StartUserAuth(id);
             return Ok();
         }
     }

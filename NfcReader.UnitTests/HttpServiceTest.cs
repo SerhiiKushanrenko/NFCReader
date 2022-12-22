@@ -50,7 +50,7 @@ namespace NfcReader.UnitTests
             var httpClient = new HttpClient(handlerMock.Object);
             var httpService = new HttpService(httpClient);
 
-            var statusCode = await httpService.CallCloudBackEnd(userAuthDTO);
+            var statusCode = await httpService.UserAuthOnCloudBackEndAsync(userAuthDTO);
 
             handlerMock.Protected().Verify(
                 "SendAsync",

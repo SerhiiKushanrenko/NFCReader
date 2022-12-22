@@ -5,6 +5,6 @@ namespace BLL.Services.Interfaces
 {
     public interface IHttpService
     {
-        Task<HttpStatusCode> CallCloudBackEnd(UserAuthDTO user);
+        Task<HttpStatusCode> UserAuthOnCloudBackEndAsync(UserAuthDTO user);
     }
 }

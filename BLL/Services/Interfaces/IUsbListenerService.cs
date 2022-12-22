@@ -4,6 +4,6 @@ namespace BLL.Services.Interfaces
 {
     public interface IUsbListenerService
     {
-        public UsbDeviceInfoDTO StartListen();
+        public UsbDeviceInfoDTO StartListenUsbPosts();
     }
 }

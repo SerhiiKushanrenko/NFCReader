@@ -13,12 +13,12 @@ namespace BLL.Services
         {
             client = httpClient;
         }
-        public async Task<HttpStatusCode> CallCloudBackEnd(UserAuthDTO user)
+        public async Task<HttpStatusCode> UserAuthOnCloudBackEndAsync(UserAuthDTO user)
         {
-            return await CreateProductAsync(user);
+            return await SendUserDataCredAsync(user);
         }
 
-        private async Task<HttpStatusCode> CreateProductAsync(UserAuthDTO user)
+        private async Task<HttpStatusCode> SendUserDataCredAsync(UserAuthDTO user)
         {
             var response = await client.PostAsJsonAsync(
                 "https://localhost:7079/api/UserInfo", user);

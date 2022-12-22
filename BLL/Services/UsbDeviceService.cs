@@ -37,19 +37,5 @@ namespace BLL.Services
                 return devices;
             }
         }
-
-        //public List<UsbDeviceInfoDTO> Test()
-        //{
-        //    WqlEventQuery query = new WqlEventQuery(
-        //            "SELECT * FROM Win32_USBHub");
-
-        //    ManagementObject
-
-        //        ManagementEventWatcher watcher = new ManagementEventWatcher(query);
-        //        Console.WriteLine("Waiting for an event...");
-
-
-        //}
-
     }
 }

@@ -16,7 +16,7 @@ namespace BLL.Services
             _usbService = deviceService;
         }
 
-        public UsbDeviceInfoDTO StartListen()
+        public UsbDeviceInfoDTO StartListenUsbPosts()
         {
             var watch = Stopwatch.StartNew();
             var newDevices = new List<UsbDeviceInfoDTO>();
@@ -38,5 +38,32 @@ namespace BLL.Services
                 Task.Delay(20).Wait();
             }
         }
+
+        public UsbDeviceInfoDTO StartListenUsbPortWithFor()
+        {
+            var newDevices = new List<UsbDeviceInfoDTO>();
+            int counter = 15;
+
+            for (int i = 0; i < counter; i++)
+            {
+                newDevices = _usbService.GetUSBDevices();
+
+                newDevices = newDevices.ExceptBy(
+                        _usbService.StaticDevices.Select(e => e.DeviceId), e => e.DeviceId)
+                    .ToList();
+
+                if (newDevices.Any())
+                {
+                    return newDevices.First();
+                }
+
+                Task.Delay(1000).Wait();
+                counter++;
+            }
+            return new();
+        }
     }
+
 }
+
+

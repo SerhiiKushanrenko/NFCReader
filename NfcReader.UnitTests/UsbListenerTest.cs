@@ -30,7 +30,7 @@ namespace NfcReader.UnitTests
             // arrange    
             var service = _usbDeviceServiceMock.Object;
             var usbListener = new UsbListenerService(service);
-            var newDevices = usbListener.StartListen();
+            var newDevices = usbListener.StartListenUsbPosts();
 
             //act
             var result = new UsbDeviceInfoDTO();
